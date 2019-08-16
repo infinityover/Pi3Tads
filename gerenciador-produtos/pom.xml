@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.senac.pi3b.jsn</groupId>
+    <artifactId>gerenciador-produtos</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <organization>
+        <name>Senac TADS PI3B - JUNTOS E SHALLOW NOW</name>
+    </organization>
+    <developers>
+        <developer>
+           <id>GabrielaVSMarques</id> 
+           <name>Gabriela Vitoria Santana Marques</name>
+        </developer>
+        <developer>
+           <id>Paulo</id> 
+           <name>Paulo Bolfin</name>
+        </developer>
+        <developer>
+           <id>Veronica</id> 
+           <name>Veronica</name>
+        </developer>
+        <developer>
+           <id>Debora</id> 
+           <name>Debora</name>
+        </developer>
+        <developer>
+           <id>Jonathan</id> 
+           <name>Jonathan</name>
+        </developer>
+        <developer>
+           <id>Gabriela</id> 
+           <name>Gabriela</name>
+        </developer>      
+    </developers>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.17</version>
+        </dependency>
+    </dependencies>
+</project>
