@@ -5,33 +5,33 @@
     <artifactId>gerenciador-produtos</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <organization>
-        <name>Senac TADS PI3B - JUNTOS E SHALLOW NOW</name>
-    </organization>
+     <organization>
+        <name> Senac TADS PI3B - JUNTOS E SHALLOW NOW </name>
+     </organization >
     <developers>
         <developer>
-           <id>GabrielaVSMarques</id> 
+           <id>GabrielaVSMarques</id>
            <name>Gabriela Vitoria Santana Marques</name>
         </developer>
         <developer>
-           <id>Paulo</id> 
-           <name>Paulo Bolfin</name>
+           <id>Gabrielaannibal</id>
+           <name>Gabriela Annibal</name>
         </developer>
         <developer>
-           <id>Veronica</id> 
-           <name>Veronica</name>
+           <id>Velsilva</id>
+           <name>Verônica Maria da Silva</name>
         </developer>
         <developer>
-           <id>Debora</id> 
-           <name>Debora</name>
+           <id>Jonathank99</id>
+           <name>Jonathan Oliveira Dias e Silva </name>
         </developer>
         <developer>
-           <id>Jonathan</id> 
-           <name>Jonathan</name>
+           <id>infinityover</id>
+           <name>Paulo Belfi</name>
         </developer>
         <developer>
-           <id>Gabriela</id> 
-           <name>Gabriela</name>
+           <id>DeboraGomes2708</id>
+           <name>Debora da Silva Gomes</name>
         </developer>      
     </developers>
     <properties>
