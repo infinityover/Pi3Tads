@@ -29,7 +29,7 @@
 
 }
 .card:hover{
-  background-color: #4CAF50; /* Green */
+  background-color:  #43425D;
   color: white;
   cursor: pointer;
 }

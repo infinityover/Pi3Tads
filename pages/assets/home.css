@@ -20,7 +20,7 @@ a{
     justify-items: center;
 }
 .card:hover{
-  background-color: #4CAF50; /* Green */
+  background-color: #43425D; /* Green */
   color: white;
   cursor: pointer;
 }
