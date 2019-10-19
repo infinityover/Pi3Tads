@@ -17,8 +17,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
     </script>
 
-    <%--<%@include file="/WEB-INF/css/index.css"%>--%>
-    <title>Tadesf</title>
+    <title>Tades</title>
     <style><%@include file="../css/index.css"%></style>
 
 </head>

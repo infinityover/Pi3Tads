@@ -31,7 +31,7 @@
                 </div>
             </div>
         </a> -->
-        <a href="./produtos/produtos.html">
+        <a href="/PiTads/produtos">
             <div class="card">
                 <div class="card-body">
                     Produtos
