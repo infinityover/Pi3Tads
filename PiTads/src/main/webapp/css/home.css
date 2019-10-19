@@ -1,0 +1,26 @@
+.body{
+    display: grid;    
+    grid-template-columns: 45vw 45vw;
+    grid-template-rows: 45vh 45vh;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    height: 100%;
+    width: 100%;
+}
+
+.card{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+.card:hover{
+  background-color: #43425D; /* Green */
+  color: white;
+  cursor: pointer;
+}

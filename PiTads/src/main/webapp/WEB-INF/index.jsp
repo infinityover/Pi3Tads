@@ -1,30 +1,38 @@
-<!DOCTYPE html>
-
+<%-- 
+    Document   : index
+    Created on : Oct 19, 2019, 1:18:48 PM
+    Author     : paulo
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
 
 <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="./assets/index.css">
-    <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
 
-    <title>Tades</title>
+    <%--<%@include file="/WEB-INF/css/index.css"%>--%>
+    <title>Tadesf</title>
+    <style><%@include file="../css/index.css"%></style>
+
 </head>
 
 <body>
     <section class="sidenav">
         <div class="position-abs row">
-            <img class="img" src="assets/Logo.svg">
+            <img class="img" src="${pageContext.request.contextPath}/assets/Logo.svg">
         </div>
     </section>
     <div class="main ">
         <div class="col-md-6 col-sm-12">
             <div class="login-form centered">
-                <form>
+                <form method="post" action="${pageContext.request.contextPath}/Home" novalidate>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="CPF">
                     </div>
@@ -40,7 +48,7 @@
 
                     </div>
                     <br>
-                    <button type="button" class="btn btn-black" onclick="submitform()">Login</button>
+                    <button type="submit" class="btn btn-black">Login</button>
                 </form>
             </div>
         </div>
