@@ -1,0 +1,68 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #F0F0F7;
+    overflow-x: hidden;
+    padding-top: 20px;
+    width: 40%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.position-abs{
+    position: absolute;
+}
+
+.addons{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+
+}
+.forgot-pass{
+    justify-self: end;
+}
+
+.img{
+    position: relative;
+    top: 200px;
+    left: 40%;
+}
+
+.main { 
+    margin-left: 60%;
+
+}
+
+.login-form{
+    margin-top: 100%;
+}
+
+.register-form{
+    margin-top: 20%;
+}
+
+.login-main-text{
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #43425D !important;
+    color: #fff;
+    padding: 0.375rem 1.75rem !important;
+}
