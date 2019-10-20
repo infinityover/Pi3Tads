@@ -18,7 +18,16 @@ public class ProdutoController {
          ProdutoDao produtodao =  new ProdutoDao();
          return produtodao.pesquisar();
      }
-     public Produto buscaProduto(){
-         return null;
+     public Produto buscaProduto(String id){
+         ProdutoDao produtodao =  new ProdutoDao();
+         return produtodao.pesquisarId(id);
+     }
+     public boolean produtoSalvar(Produto produto){
+         ProdutoDao produtodao =  new ProdutoDao();
+         return produtodao.salvar(produto);
+     }
+     public boolean produtoEditar(Produto produto){
+         ProdutoDao produtodao =  new ProdutoDao();
+         return produtodao.editar(produto);
      }
 }

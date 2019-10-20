@@ -35,8 +35,8 @@
                     <td><c:out value="${produto.valor}"/></td>
                     <td>203</td>
                 <td>
-                    <td><a href="./produtosCrud.html"><button type="button" class="btn btn-black">Editar</button></a></td>
-                    <td><button type="button" class="btn btn-red">Excluir</button></td>
+                    <td><a href="/PiTads/ProdutoCrud?id=<c:out value='${produto.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
+                    <td><a href="/PiTads/ProdutoExcluir?id=<c:out value='${produto.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
                 </td>
                 </c:forEach>
                 </tbody>
@@ -48,7 +48,7 @@
     </c:choose>
 
     <a href="/PiTads/Home"><button type="button" class="btn btn-black">Voltar</button></a>
-    <a href="./produtosCrud.html"><button type="button" class="btn btn-black">Novo</button></a>
+    <a href="/PiTads/ProdutoCrud"><button type="button" class="btn btn-black">Novo</button></a>
 </body>
 
 </html>

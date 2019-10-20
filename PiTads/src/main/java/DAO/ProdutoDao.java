@@ -64,4 +64,78 @@ public class ProdutoDao {
         }
         return null;
     }
+    
+        public Produto pesquisarId(String id) {
+        try {
+            Class.forName(DRIVER);
+            conexao = conectaBanco();
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM produto where id = ?;");
+            comando.setString(1, id);
+            ResultSet rs = comando.executeQuery();
+            Produto prod = null;
+            while (rs.next()) {
+                prod = new Produto(rs.getString("id"),rs.getString("nome") ,rs.getFloat("valor"));
+            }
+            return prod;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            }
+        }
+        return null;
+    }
+    
+    public boolean salvar(Produto prod) {
+        try {
+            Class.forName(DRIVER);
+            conexao = conectaBanco();
+            PreparedStatement comando = conexao.prepareStatement("INSERT INTO PRODUTO(id, nome, valor) values (?,?,?);");
+            comando.setString(1, prod.getId());
+            comando.setString(2, prod.getNome());
+            comando.setFloat(3, prod.getValor());
+            if(comando.executeUpdate() > 0){ 
+                return true;
+            }
+            return false;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            }
+        }
+        return false;
+    }
+        
+        public boolean editar(Produto prod) {
+        try {
+            Class.forName(DRIVER);
+            conexao = conectaBanco();
+            PreparedStatement comando = conexao.prepareStatement("UPDATE Produto set nome = ?, valor = ? where id = ?");
+            comando.setString(1, prod.getNome());
+            comando.setFloat(2, prod.getValor());
+            comando.setString(3, prod.getId());
+            
+            if(comando.executeUpdate() > 0){ 
+                return true;
+            }
+            return false;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            }
+        }
+        return false;
+        }
+        
 }
