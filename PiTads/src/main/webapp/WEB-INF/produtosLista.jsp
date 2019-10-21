@@ -30,6 +30,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${Produtos}" var="produto">
+                    <tr>
                     <th scope="row"><c:out value="${produto.id}"/></th>
                     <td><c:out value="${produto.nome}"/></td>
                     <td><c:out value="${produto.valor}"/></td>
@@ -38,6 +39,7 @@
                     <td><a href="/PiTads/ProdutoCrud?id=<c:out value='${produto.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
                     <td><a href="/PiTads/ProdutoExcluir?id=<c:out value='${produto.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
                 </td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>

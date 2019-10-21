@@ -9,6 +9,7 @@ import Controller.ProdutoController;
 import Model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,14 +32,13 @@ public class produtoSalvar extends HttpServlet {
                 ProdutoController produtoController = new ProdutoController();
                 Produto produto = produtoController.buscaProduto(id);
                     if(produto != null){
+                        produto = new Produto(request.getParameter("id"),request.getParameter("nome"),Float.valueOf(request.getParameter("valor")));
                         produtoController.produtoEditar(produto);
                     }else{
                         produto = new Produto(request.getParameter("id"),request.getParameter("nome"),Float.valueOf(request.getParameter("valor")));
                         produtoController.produtoSalvar(produto);
                     }
             }
-             RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/WEB-INF/produtoLista.jsp");
-        dispatcher.forward(request, response);
+            response.sendRedirect("/PiTads/produtos");
     }
 }

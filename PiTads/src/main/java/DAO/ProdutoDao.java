@@ -121,7 +121,28 @@ public class ProdutoDao {
             comando.setString(1, prod.getNome());
             comando.setFloat(2, prod.getValor());
             comando.setString(3, prod.getId());
-            
+            if(comando.executeUpdate() > 0){ 
+                return true;
+            }
+            return false;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            }
+        }
+        return false;
+        }
+        
+        public boolean excluir(String id) {
+        try {
+            Class.forName(DRIVER);
+            conexao = conectaBanco();
+            PreparedStatement comando = conexao.prepareStatement("DELETE FROM produto where id = ?;");
+            comando.setString(1, id);
             if(comando.executeUpdate() > 0){ 
                 return true;
             }

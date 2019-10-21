@@ -21,7 +21,7 @@
     <form method="post" action="${pageContext.request.contextPath}/produtoSalvar">
         <div class="form-group">
             <label>Código do produto:</label>
-            <input type="text" name="id" placeholder="Código do produto" value=<c:out value="${id}" /> <c:if test="${not empty id}"><c:out value="disabled='disabled'"/></c:if>>
+            <input type="text" name="id" placeholder="Código do produto" value=<c:out value="${id}" /> <c:if test="${not empty id}"><c:out value="readonly='readonly'"/></c:if>>
             <br>
             <label>Nome do produto:</label>
             <input type="text" name="nome" placeholder="Nome do produto" value=<c:out value="${nome}" />>

@@ -30,4 +30,8 @@ public class ProdutoController {
          ProdutoDao produtodao =  new ProdutoDao();
          return produtodao.editar(produto);
      }
+     public boolean produtoExcluir(String id){
+         ProdutoDao produtodao =  new ProdutoDao();
+         return produtodao.excluir(id);
+     }
 }
