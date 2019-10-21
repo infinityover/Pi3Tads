@@ -5,7 +5,9 @@
  */
 package br.senac.tads.pi3;
 
+import Controller.FiliaisController;
 import Controller.ProdutoController;
+import Model.Filial;
 import Model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,24 +23,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author paulo
  */
-@WebServlet(name = "produtoSalvar", urlPatterns = {"/produtoSalvar"})
-public class produtoSalvar extends HttpServlet {
+@WebServlet(name = "filialSalvar", urlPatterns = {"/filialSalvar"})
+public class filialSalvar extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
         if (id != null) {
-            ProdutoController produtoController = new ProdutoController();
-            Produto produto = produtoController.buscaProduto(id);
-            if (produto != null) {
-                produto = new Produto(request.getParameter("id"), request.getParameter("nome"), Float.valueOf(request.getParameter("valor")));
-                produtoController.produtoEditar(produto);
+            FiliaisController filiaisController = new FiliaisController();
+            Filial filial = filiaisController.buscaFilial(id);
+            if (filial != null) {
+                filial = new Filial(request.getParameter("id"), request.getParameter("apelido"), request.getParameter("estado") , request.getParameter("cidade"));
+                filiaisController.filialEditar(filial);
             } else {
-                produto = new Produto(request.getParameter("id"), request.getParameter("nome"), Float.valueOf(request.getParameter("valor")));
-                produtoController.produtoSalvar(produto);
+                filial = new Filial(request.getParameter("id"), request.getParameter("apelido"), request.getParameter("estado") , request.getParameter("cidade"));
+                filiaisController.filialSalvar(filial);
             }
         }
-        response.sendRedirect("/PiTads/produtos");
+        response.sendRedirect("/PiTads/Filiais");
     }
 }

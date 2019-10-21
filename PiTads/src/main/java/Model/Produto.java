@@ -10,7 +10,7 @@ package Model;
  * @author paulo
  */
 public class Produto {
-    
+
     private String id;
     private String nome;
     private Float valor;
@@ -38,8 +38,8 @@ public class Produto {
     public void setValor(Float valor) {
         this.valor = valor;
     }
-    
-    public Produto(String id, String nome, Float valor){
+
+    public Produto(String id, String nome, Float valor) {
         this.id = id;
         this.nome = nome;
         this.valor = valor;

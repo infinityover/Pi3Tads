@@ -3,9 +3,8 @@
     Created on : Oct 19, 2019, 2:36:55 PM
     Author     : paulo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 
 
 <html>
@@ -39,7 +38,7 @@
             </div>
         </a>
 
-        <a href="./filiais/filiais.html">
+        <a href="/PiTads/Filiais">
             <div class="card">
                 <div class="card-body">
                     Filiais

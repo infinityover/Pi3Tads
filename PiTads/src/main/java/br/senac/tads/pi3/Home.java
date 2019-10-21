@@ -21,22 +21,20 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Home", urlPatterns = {"/Home"})
 public class Home extends HttpServlet {
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                RequestDispatcher dispatcher
+        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/home.jsp");
         dispatcher.forward(request, response);
     }
-        @Override
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                RequestDispatcher dispatcher
+        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/home.jsp");
         dispatcher.forward(request, response);
     }
-    
-
 
 }

@@ -23,11 +23,11 @@ public class produtoExcluir extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String id = request.getParameter("id");
-            if(id != null){
-                ProdutoController produtoController = new ProdutoController();
-                produtoController.produtoExcluir(id);
-            }
-            response.sendRedirect("/PiTads/produtos");
+        String id = request.getParameter("id");
+        if (id != null) {
+            ProdutoController produtoController = new ProdutoController();
+            produtoController.produtoExcluir(id);
+        }
+        response.sendRedirect("/PiTads/produtos");
     }
 }

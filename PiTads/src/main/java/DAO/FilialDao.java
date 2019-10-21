@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Model.Produto;
+import Model.Filial;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author paulo
  */
-public class ProdutoDao {
+public class FilialDao {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String SERVIDOR = "localhost";
@@ -38,22 +38,23 @@ public class ProdutoDao {
      *
      * @return
      */
-    public ArrayList<Produto> pesquisar() {
+    public ArrayList<Filial> pesquisar() {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM produto;");
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM filial;");
 
             ResultSet rs = comando.executeQuery();
 
-            ArrayList<Produto> produtos = new ArrayList<>();
+            ArrayList<Filial> filiais = new ArrayList<>();
             while (rs.next()) {
                 String id = rs.getString("id");
-                String nome = rs.getString("nome");
-                Float valor = rs.getFloat("valor");
-                produtos.add(new Produto(id, nome, valor));
+                String nome = rs.getString("apelido");
+                String estado = rs.getString("estado");
+                String cidade = rs.getString("cidade");
+                filiais.add(new Filial(id, nome, estado, cidade));
             }
-            return produtos;
+            return filiais;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -66,18 +67,18 @@ public class ProdutoDao {
         return null;
     }
 
-    public Produto pesquisarId(String id) {
+    public Filial pesquisarId(String id) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM produto where id = ?;");
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM filial where id = ?;");
             comando.setString(1, id);
             ResultSet rs = comando.executeQuery();
-            Produto prod = null;
+            Filial filial = null;
             while (rs.next()) {
-                prod = new Produto(rs.getString("id"), rs.getString("nome"), rs.getFloat("valor"));
+                filial = new Filial(rs.getString("id"), rs.getString("apelido"), rs.getString("estado"), rs.getString("cidade"));
             }
-            return prod;
+            return filial;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -90,14 +91,15 @@ public class ProdutoDao {
         return null;
     }
 
-    public boolean salvar(Produto prod) {
+    public boolean salvar(Filial filial) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("INSERT INTO PRODUTO(id, nome, valor) values (?,?,?);");
-            comando.setString(1, prod.getId());
-            comando.setString(2, prod.getNome());
-            comando.setFloat(3, prod.getValor());
+            PreparedStatement comando = conexao.prepareStatement("INSERT INTO filial(id, apelido, estado, cidade) values (?,?,?,?);");
+            comando.setString(1, filial.getId());
+            comando.setString(2, filial.getApelido());
+            comando.setString(3, filial.getEstado());
+            comando.setString(4, filial.getCidade());
             if (comando.executeUpdate() > 0) {
                 return true;
             }
@@ -114,14 +116,15 @@ public class ProdutoDao {
         return false;
     }
 
-    public boolean editar(Produto prod) {
+    public boolean editar(Filial filial) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("UPDATE Produto set nome = ?, valor = ? where id = ?");
-            comando.setString(1, prod.getNome());
-            comando.setFloat(2, prod.getValor());
-            comando.setString(3, prod.getId());
+            PreparedStatement comando = conexao.prepareStatement("UPDATE filial set apelido = ?, estado = ?, cidade = ? where id = ?");
+            comando.setString(1, filial.getApelido());
+            comando.setString(2, filial.getEstado());
+            comando.setString(3, filial.getCidade());
+            comando.setString(4, filial.getId());
             if (comando.executeUpdate() > 0) {
                 return true;
             }
@@ -142,7 +145,7 @@ public class ProdutoDao {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("DELETE FROM produto where id = ?;");
+            PreparedStatement comando = conexao.prepareStatement("DELETE FROM filial where id = ?;");
             comando.setString(1, id);
             if (comando.executeUpdate() > 0) {
                 return true;

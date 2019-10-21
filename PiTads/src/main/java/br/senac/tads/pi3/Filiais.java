@@ -5,7 +5,9 @@
  */
 package br.senac.tads.pi3;
 
+import Controller.FiliaisController;
 import Controller.ProdutoController;
+import Model.Filial;
 import Model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author paulo
  */
-@WebServlet(name = "Produtos", urlPatterns = {"/produtos"})
-public class Produtos extends HttpServlet {
+@WebServlet(name = "Filiais", urlPatterns = {"/Filiais"})
+public class Filiais extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,8 +37,8 @@ public class Produtos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/produtosLista.jsp");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/WEB-INF/filiaisLista.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -52,9 +54,9 @@ public class Produtos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProdutoController produtoController = new ProdutoController();
-        ArrayList<Produto> produtos = produtoController.listaProdutos();
-        request.setAttribute("Produtos", produtos);
+            FiliaisController filiaisController = new FiliaisController();
+            ArrayList<Filial> filiais = filiaisController.listaFiliais();
+            request.setAttribute("Filiais", filiais);
         processRequest(request, response);
     }
 }
