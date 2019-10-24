@@ -5,11 +5,12 @@
  */
 package br.senac.tads.pi3;
 
-import Controller.ProdutoController;
 import Controller.VendasController;
+import DAO.VendasProdutoDao;
 import Model.Vendas;
+import Model.VendasProduto;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,9 +30,18 @@ public class vendasEfetuar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
+        int idVenda = -1;
         VendasController vendasController = new VendasController();
-        ArrayList<Vendas> vendas = vendasController.listaVendas();
-        request.setAttribute("Vendas", vendas);
+        if(request.getParameter("VendaId") == null){
+            idVenda = vendasController.vendaSalvar(new Vendas(0,"", new Timestamp(System.currentTimeMillis()), 0f));
+            request.setAttribute("VendaId", idVenda);
+        }
+        
+        VendasProdutoDao produtoVendasDao = new VendasProdutoDao();
+        
+        ArrayList<VendasProduto> produtoVendas = produtoVendasDao.pesquisar(idVenda);
+        request.setAttribute("Vendas", produtoVendas);
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/vendasEfetuar.jsp");
         dispatcher.forward(request, response);

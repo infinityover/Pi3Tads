@@ -45,7 +45,7 @@
                 </div>
             </div>
         </a>
-        <a href="./vendas/vendas.html">
+        <a href="/PiTads/Vendas">
             <div class="card">
                 <div class="card-body">
                     Vendas

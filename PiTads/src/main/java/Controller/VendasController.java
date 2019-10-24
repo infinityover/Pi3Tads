@@ -25,7 +25,7 @@ public class VendasController {
         return vendasdao.pesquisarId(id);
     }
 
-    public boolean vendaSalvar(Vendas venda) {
+    public int vendaSalvar(Vendas venda) {
         VendasDao vendasdao = new VendasDao();
         return vendasdao.salvar(venda);
     }

@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -43,7 +44,7 @@ public class VendasDao {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM Vendas;");
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM Venda;");
 
             ResultSet rs = comando.executeQuery();
 
@@ -72,7 +73,7 @@ public class VendasDao {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM vendas where id = ?;");
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM venda where id = ?;");
             comando.setInt(1, id);
             ResultSet rs = comando.executeQuery();
             Vendas vendas = null;
@@ -92,18 +93,26 @@ public class VendasDao {
         return null;
     }
 
-    public boolean salvar(Vendas venda) {
+    public int salvar(Vendas venda) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("INSERT INTO vendas(idFilial ,dataOp ,valor) values (?,?,?);");
+            PreparedStatement comando = conexao.prepareStatement("INSERT INTO venda(idFilial ,dataOp ,valor) values (?,?,?);",Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, venda.getIdFilial());
             comando.setTimestamp(2, venda.getDataOp());
             comando.setFloat(3, venda.getValor());
+            
             if (comando.executeUpdate() > 0) {
-                return true;
+                try (ResultSet generatedKeys = comando.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                return(generatedKeys.getInt(1));
             }
-            return false;
+            else {
+                throw new SQLException("Creating user failed, no ID obtained.");
+            }
+        }
+            }
+            return -1;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -113,14 +122,14 @@ public class VendasDao {
                 System.out.println(ex.getMessage());
             }
         }
-        return false;
+        return -1;
     }
 
     public boolean editar(Vendas venda) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("UPDATE vendas set idFilial = ?, dataOp = ?, valor= ? where id = ?");
+            PreparedStatement comando = conexao.prepareStatement("UPDATE venda set idFilial = ?, dataOp = ?, valor= ? where id = ?");
             comando.setString(1, venda.getIdFilial());
             comando.setTimestamp(2, venda.getDataOp());
             comando.setFloat(3, venda.getValor());
@@ -147,7 +156,7 @@ public class VendasDao {
             conexao = conectaBanco();
             VendasProdutoDao vendasDao = new VendasProdutoDao();
             vendasDao.excluirVenda(id);
-            PreparedStatement comando = conexao.prepareStatement("DELETE FROM vendas where id = ?;");
+            PreparedStatement comando = conexao.prepareStatement("DELETE FROM venda where id = ?;");
             comando.setInt(1, id);
             if (comando.executeUpdate() > 0) {
                 return true;

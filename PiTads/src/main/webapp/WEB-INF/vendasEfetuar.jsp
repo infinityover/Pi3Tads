@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
 
@@ -16,30 +18,42 @@
 </head>
 
 <body>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Produto</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Desconto</th>
-                <th scope="col">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>R$100,00</td>
-                <td>20</td>
-                <td>0%</td>
-                <td>R$2000,00</td>
-                <td><button type="button" class="btn btn-black">Editar</button></td>
-                <td><button type="button" class="btn btn-red">Excluir</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <c:choose>
+        <c:when test="${not empty Vendas}">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Desconto</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${Vendas}" var="venda">
+                    <tr>
+                    <th scope="row"><c:out value="${venda.id}"/></th>
+                    <td><c:out value="${venda.idProduto}"/></td>
+                    <td><c:out value="${venda.valor}"/></td>
+                    <td><c:out value="${venda.quantidade}"/></td>
+                    <td><c:out value="${venda.desconto}"/></td>
+                    <td><c:out value="${venda.valor} * ${venda.quantidade}"/></td>
+                <td>
+                    <td><a href="/PiTads/ProdutoCrud?id=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
+                    <td><a href="/PiTads/ProdutoExcluir?id=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
+                </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:when>
+        <c:otherwise>
+            <p>Nenhum produto cadastrado</p>
+        </c:otherwise>
+    </c:choose>
+
 
     <button type="button" class="btn btn-black">Cancelar</button>
     <button type="button" class="btn btn-black">Finalizar</button>
