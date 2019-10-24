@@ -5,6 +5,10 @@
  */
 package br.senac.tads.pi3;
 
+import Controller.FiliaisController;
+import Controller.ProdutoController;
+import Model.Filial;
+import Model.Produto;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,19 +19,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author fernando.tsuda
+ * @author paulo
  */
-@WebServlet(name = "FormularioTest", urlPatterns = {"/"})
-public class FormularioTest extends HttpServlet {
+@WebServlet(name = "Vendas", urlPatterns = {"/Vendas"})
+public class Vendas extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, 
-            HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/WEB-INF/index.jsp");
+             RequestDispatcher dispatcher = 
+                request.getRequestDispatcher("/WEB-INF/vendas.jsp");
         dispatcher.forward(request, response);
     }
-    
-
 }

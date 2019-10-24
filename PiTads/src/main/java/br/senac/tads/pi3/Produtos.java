@@ -8,7 +8,6 @@ package br.senac.tads.pi3;
 import Controller.ProdutoController;
 import Model.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -5,19 +5,20 @@
  */
 package DAO;
 
-import Model.Filial;
+import Model.Vendas;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
  *
  * @author paulo
  */
-public class FilialDao {
+public class VendasDao {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String SERVIDOR = "localhost";
@@ -38,23 +39,23 @@ public class FilialDao {
      *
      * @return
      */
-    public ArrayList<Filial> pesquisar() {
+    public ArrayList<Vendas> pesquisar() {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM filial;");
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM Vendas;");
 
             ResultSet rs = comando.executeQuery();
 
-            ArrayList<Filial> filiais = new ArrayList<>();
+            ArrayList<Vendas> vendas = new ArrayList<>();
             while (rs.next()) {
-                String id = rs.getString("id");
-                String nome = rs.getString("apelido");
-                String estado = rs.getString("estado");
-                String cidade = rs.getString("cidade");
-                filiais.add(new Filial(id, nome, estado, cidade));
+                int id = rs.getInt("id");
+                String idFilial = rs.getString("idFilial");
+                Timestamp dataOp = rs.getTimestamp("dataOp");
+                Float valor = rs.getFloat("valor");
+                vendas.add(new Vendas(id, idFilial,dataOp,valor));
             }
-            return filiais;
+            return vendas;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -67,18 +68,18 @@ public class FilialDao {
         return null;
     }
 
-    public Filial pesquisarId(String id) {
+    public Vendas pesquisarId(int id) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM filial where id = ?;");
-            comando.setString(1, id);
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM vendas where id = ?;");
+            comando.setInt(1, id);
             ResultSet rs = comando.executeQuery();
-            Filial filial = null;
+            Vendas vendas = null;
             while (rs.next()) {
-                filial = new Filial(rs.getString("id"), rs.getString("apelido"), rs.getString("estado"), rs.getString("cidade"));
+                vendas = new Vendas(rs.getInt("id"), rs.getString("idFilial"), rs.getTimestamp("dataOp"), rs.getFloat("valor"));
             }
-            return filial;
+            return vendas;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -91,15 +92,14 @@ public class FilialDao {
         return null;
     }
 
-    public boolean salvar(Filial filial) {
+    public boolean salvar(Vendas venda) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("INSERT INTO filial(id, apelido, estado, cidade) values (?,?,?,?);");
-            comando.setString(1, filial.getId());
-            comando.setString(2, filial.getApelido());
-            comando.setString(3, filial.getEstado());
-            comando.setString(4, filial.getCidade());
+            PreparedStatement comando = conexao.prepareStatement("INSERT INTO vendas(idFilial ,dataOp ,valor) values (?,?,?);");
+            comando.setString(1, venda.getIdFilial());
+            comando.setTimestamp(2, venda.getDataOp());
+            comando.setFloat(3, venda.getValor());
             if (comando.executeUpdate() > 0) {
                 return true;
             }
@@ -116,15 +116,15 @@ public class FilialDao {
         return false;
     }
 
-    public boolean editar(Filial filial) {
+    public boolean editar(Vendas venda) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("UPDATE filial set apelido = ?, estado = ?, cidade = ? where id = ?");
-            comando.setString(1, filial.getApelido());
-            comando.setString(2, filial.getEstado());
-            comando.setString(3, filial.getCidade());
-            comando.setString(4, filial.getId());
+            PreparedStatement comando = conexao.prepareStatement("UPDATE vendas set idFilial = ?, dataOp = ?, valor= ? where id = ?");
+            comando.setString(1, venda.getIdFilial());
+            comando.setTimestamp(2, venda.getDataOp());
+            comando.setFloat(3, venda.getValor());
+            comando.setInt(4, venda.getId());
             if (comando.executeUpdate() > 0) {
                 return true;
             }
@@ -141,12 +141,14 @@ public class FilialDao {
         return false;
     }
 
-    public boolean excluir(String id) {
+    public boolean excluir(int id) {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("DELETE FROM filial where id = ?;");
-            comando.setString(1, id);
+            VendasProdutoDao vendasDao = new VendasProdutoDao();
+            vendasDao.excluirVenda(id);
+            PreparedStatement comando = conexao.prepareStatement("DELETE FROM vendas where id = ?;");
+            comando.setInt(1, id);
             if (comando.executeUpdate() > 0) {
                 return true;
             }

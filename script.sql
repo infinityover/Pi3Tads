@@ -28,7 +28,7 @@ create table produtoFilial(
 );
 
 create table venda(
-    id int,
+    id int NOT NULL AUTO_INCREMENT,
     idFilial varchar(30),
     dataOp timestamp,
     valor float(15,2),
@@ -38,6 +38,7 @@ create table venda(
 
 create table vendaProduto(
     id int,
+    idVenda int, 
     idProduto varchar(30),
     valor float(15,2),
     quantidade int,

@@ -23,7 +23,7 @@ public class ProdutoDao {
     private static final String SERVIDOR = "localhost";
     private static final String PORTA = "3306";
     private static final String LOGIN = "root";
-    private static final String SENHA = "root";
+    private static final String SENHA = "121296Pk!";
     private static String url = "";
     private static Connection conexao;
 
