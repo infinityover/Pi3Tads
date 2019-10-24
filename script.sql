@@ -37,7 +37,7 @@ create table venda(
 );
 
 create table vendaProduto(
-    id int,
+    id int AUTO_INCREMENT,
     idVenda int, 
     idProduto varchar(30),
     valor float(15,2),
