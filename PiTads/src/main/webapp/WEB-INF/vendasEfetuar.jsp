@@ -41,8 +41,8 @@
                     <td><c:out value="${venda.desconto}"/></td>
                     <td><c:out value="${venda.valor} * ${venda.quantidade}"/></td>
                 <td>
-                    <td><a href="/PiTads/ProdutoCrud?id=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
-                    <td><a href="/PiTads/ProdutoExcluir?id=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
+                    <td><a href="/PiTads/VendasCrud?idVendaProduto=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
+                    <td><a href="/PiTads/VendasExcluir?idVendaProduto=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
                 </td>
                     </tr>
                 </c:forEach>
@@ -56,8 +56,9 @@
 
 
     <button type="button" class="btn btn-black">Cancelar</button>
-    <button type="button" class="btn btn-black">Finalizar</button>
-    <button type="button" class="btn btn-black">Novo</button>
+    
+    <a href="/PiTads/Home"><button type="button" class="btn btn-black">Finalizar</button></a>
+    <a href="/PiTads/VendasCrud?id=<c:out value='${VendaId}'/>"><button type="button" class="btn btn-black">Novo</button></a>
 </body>
 
 </html>

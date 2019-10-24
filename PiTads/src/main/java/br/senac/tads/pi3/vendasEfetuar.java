@@ -31,16 +31,17 @@ public class vendasEfetuar extends HttpServlet {
             throws ServletException, IOException {
 
         
-        int idVenda = -1;
-        VendasController vendasController = new VendasController();
-        if(request.getParameter("VendaId") == null){
-            idVenda = vendasController.vendaSalvar(new Vendas(0,"", new Timestamp(System.currentTimeMillis()), 0f));
-            request.setAttribute("VendaId", idVenda);
-        }
+        VendasController vendasController =  new VendasController();
+        int vendaId = Integer.valueOf(request.getParameter("VendaId"));
+        if(vendaId == 0){
+            vendaId = vendasController.vendaSalvar(new Vendas(0,"", new Timestamp(System.currentTimeMillis()), 0f));
+        }            
+        request.setAttribute("VendaId", vendaId);
+        
         
         VendasProdutoDao produtoVendasDao = new VendasProdutoDao();
         
-        ArrayList<VendasProduto> produtoVendas = produtoVendasDao.pesquisar(idVenda);
+        ArrayList<VendasProduto> produtoVendas = produtoVendasDao.pesquisar(vendaId);
         request.setAttribute("Vendas", produtoVendas);
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/vendasEfetuar.jsp");

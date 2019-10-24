@@ -44,5 +44,4 @@ create table vendaProduto(
     quantidade int,
     desconto float(4,2),
     CONSTRAINT vendaProdutoPk PRIMARY KEY (id)
-
 );

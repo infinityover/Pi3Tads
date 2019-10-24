@@ -42,14 +42,14 @@ public class VendasProdutoDao {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM vendaProduto where id = ?;");
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM vendaProduto where idVenda = ?;");
             comando.setInt(1, idVenda);
             ResultSet rs = comando.executeQuery();
 
             ArrayList<VendasProduto> listaVenda = new ArrayList<>();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                int idProduto = rs.getInt("idProduto");
+                String idProduto = rs.getString("idProduto");
                 Float valor = rs.getFloat("valor");
                 int quantidade = rs.getInt("quantidade");
                 Float desconto = rs.getFloat("desconto");
@@ -78,7 +78,7 @@ public class VendasProdutoDao {
             VendasProduto vendaProduto =null; 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                int idProduto = rs.getInt("idProduto");
+                String idProduto = rs.getString("idProduto");
                 int idVenda = rs.getInt("idVenda");
                 Float valor = rs.getFloat("valor");
                 int quantidade = rs.getInt("quantidade");
@@ -102,13 +102,12 @@ public class VendasProdutoDao {
         try {
             Class.forName(DRIVER);
             conexao = conectaBanco();
-            PreparedStatement comando = conexao.prepareStatement("INSERT INTO filial(id ,idVenda ,idProduto ,valor ,quantidade ,desconto) values (?,?,?,?,?,?);");
-            comando.setInt(1, vendaProduto.getId());
-            comando.setInt(2, vendaProduto.getIdVenda());
-            comando.setInt(3, vendaProduto.getIdProduto());
-            comando.setFloat(4, vendaProduto.getValor());
-            comando.setInt(5, vendaProduto.getQuantidade());
-            comando.setFloat(6, vendaProduto.getDesconto());
+            PreparedStatement comando = conexao.prepareStatement("INSERT INTO vendaProduto(idVenda ,idProduto ,valor ,quantidade ,desconto) values (?,?,?,?,?);");
+            comando.setInt(1, vendaProduto.getIdVenda());
+            comando.setString(2, vendaProduto.getIdProduto());
+            comando.setFloat(3, vendaProduto.getValor());
+            comando.setInt(4, vendaProduto.getQuantidade());
+            comando.setFloat(5, vendaProduto.getDesconto());
             if (comando.executeUpdate() > 0) {
                 return true;
             }
@@ -132,7 +131,7 @@ public class VendasProdutoDao {
             PreparedStatement comando = conexao.prepareStatement("UPDATE vendaProduto set idVenda  = ? ,idProduto  = ? ,valor  = ? ,quantidade  = ? ,desconto = ? where id = ?");
             comando.setInt(1, vendaProduto.getId());
             comando.setInt(2, vendaProduto.getIdVenda());
-            comando.setInt(3, vendaProduto.getIdProduto());
+            comando.setString(3, vendaProduto.getIdProduto());
             comando.setFloat(4, vendaProduto.getValor());
             comando.setInt(5, vendaProduto.getQuantidade());
             comando.setFloat(6, vendaProduto.getDesconto());

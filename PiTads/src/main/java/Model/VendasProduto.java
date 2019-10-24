@@ -13,7 +13,7 @@ public class VendasProduto {
 
     private int id;
     private int idVenda;
-    private int idProduto;
+    private String idProduto;
     private Float valor;
     private int quantidade;
     private Float desconto;
@@ -27,7 +27,7 @@ public class VendasProduto {
     }
     
 
-    public VendasProduto(int id, int idVenda, int idProduto, Float valor, int quantidade, Float desconto) {
+    public VendasProduto(int id, int idVenda, String idProduto, Float valor, int quantidade, Float desconto) {
         this.id = id;
         this.idVenda = idVenda;
         this.idProduto = idProduto;
@@ -44,11 +44,11 @@ public class VendasProduto {
         this.id = id;
     }
 
-    public int getIdProduto() {
+    public String getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto) {
+    public void setIdProduto(String idProduto) {
         this.idProduto = idProduto;
     }
 
