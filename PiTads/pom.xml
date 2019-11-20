@@ -46,7 +46,44 @@
     </dependencies>
 
     <build>
+    
         <plugins>
+            <plugin>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-webapp-maven-plugin</artifactId>
+            <!-- check Maven Central for the latest version -->
+            <version>1.7.0</version>
+            <configuration>
+                <schemaVersion>v2</schemaVersion>
+                <resourceGroup>Pi</resourceGroup>
+                <appName>piContainerSuperDuper</appName>
+                <region>Central US</region>
+                <runtime>
+                    <os>linux</os>
+                    <javaVersion>jre8</javaVersion>
+                    <webContainer>tomcat 8.5</webContainer>
+                </runtime>
+                <deployment>
+                    <resources>
+                        <resource>
+                            <directory>${project.basedir}/target</directory>
+                            <includes>
+                                <include>*.war</include>
+                            </includes>
+                        </resource>
+                    </resources>
+                </deployment>
+            </configuration>
+        </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>80</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
