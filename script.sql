@@ -45,3 +45,13 @@ create table vendaProduto(
     desconto float(4,2),
     CONSTRAINT vendaProdutoPk PRIMARY KEY (id)
 );
+
+create table usuarios(
+    id int AUTO_INCREMENT,
+    cpf varchar(100), 
+    senha varchar(200),
+    perfil varchar(50),
+    CONSTRAINT vendaProdutoPk PRIMARY KEY (id)
+);
+
+INSERT INTO usuarios(cpf, perfil, senha) values ("44700488875","Paulo Belfi Dias da Silva","bf49376f99a0358aee8713eb1a29494c");

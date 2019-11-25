@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public class VendasProdutoDao {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String SERVIDOR = "localhost";
+    private static final String SERVIDOR = "pimysql.mysql.database.azure.com";
     private static final String PORTA = "3306";
-    private static final String LOGIN = "root";
-    private static final String SENHA = "121296Pk!";
+    private static final String LOGIN = "infinityover@pimysql";
+    private static final String SENHA = "Senha2019!";
     private static String url = "";
     private static Connection conexao;
 
