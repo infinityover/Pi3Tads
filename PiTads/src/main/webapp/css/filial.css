@@ -49,13 +49,18 @@
 
 .form{
     display: grid;
-    width: 400px;
-    justify-content: space-around;
-
+    justify-content: center;
+    padding: 50px;
 }
 
-.corpo{
+.corpo{    
     display: grid;
     justify-content: center;
-
-}
+    grid-template-columns: 1fr 1fr;
+    width: 400px;
+    padding: 10px;
+    border: solid 1px;
+    border-radius: 10px;
+    row-gap: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}   

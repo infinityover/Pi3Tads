@@ -17,25 +17,27 @@
 </head>
 
 <body>
-
-    <form method="post" action="${pageContext.request.contextPath}/produtoSalvar">
-        <div class="form-group">
-            
-            <input type="hidden" name="id" placeholder="id" value=<c:out value="${id}" />>
-            <br>
-            
-            <label>CPF:</label>
-            <input type="text" name="cpf" placeholder="CPF do usuario" value=<c:out value="${cpf}" />>
-            <br>
-            <label>Senha</label>
-            <input type="password" name="senha" placeholder="Senha" value=<c:out value="${senha}" />>
-            <br>
-            <label>Confirme a senha:</label>
-            <input type="text" name="senha" placeholder="Confirme a senha:">
-        </div>
-        </div>
-        <button type="submit" class="btn btn-black">Salvar</button>
-    </form>
+        <form method="post" action="${pageContext.request.contextPath}/produtoSalvar" class="form">
+        <div class="corpo">
+                <input type="hidden" name="id" placeholder="id" value=<c:out value="${id}" />>
+                <label>CPF:</label>
+                <input type="text" name="cpf" placeholder="CPF do usuario" value=<c:out value="${cpf}" />>
+                <label>Senha</label>
+                <input type="password" name="senha" placeholder="Senha" value=<c:out value="${senha}" />>
+                <label>Confirme a senha:</label>
+                <input type="text" name="senha" placeholder="Confirme a senha:">
+                <label>Perfil:</label>
+                <select id="estado" name="perfil" name="perfil">
+                    <option value="Gerente" <c:if test="${estado == 'Gerente'}"><c:out value="selected"/></c:if>>Gerente</option>
+                    <option value="TI" <c:if test="${estado == 'TI'}"><c:out value="selected"/></c:if>>TI</option>
+                    <option value="Vendedor" <c:if test="${estado == 'Vendedor'}"><c:out value="selected"/></c:if>>Vendedor</option>
+                    <option value="Administrativo" <c:if test="${estado == 'Administrativo'}"><c:out value="selected"/></c:if>>Administrativo</option>
+                    <option value="Produto" <c:if test="${estado == 'Produto'}"><c:out value="selected"/></c:if>>Produto</option>
+                </select>
+            <a href="/PiTads/Filiais"><button type="Button" class="btn btn-red">Cancelar</button></a>
+            <button type="submit" class="btn btn-black">Salvar</button>
+    </div>
+        </form>
 </body>
 
 </html>

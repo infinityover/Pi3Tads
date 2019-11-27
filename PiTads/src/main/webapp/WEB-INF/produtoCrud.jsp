@@ -18,20 +18,18 @@
 
 <body>
 
-    <form method="post" action="${pageContext.request.contextPath}/produtoSalvar">
-        <div class="form-group">
+    <form method="post" action="${pageContext.request.contextPath}/produtoSalvar"  class="form">
+        <div class="corpo">
+
             <label>Código do produto:</label>
             <input type="text" name="id" placeholder="Código do produto" value=<c:out value="${id}" /> <c:if test="${not empty id}"><c:out value="readonly='readonly'"/></c:if>>
-            <br>
             <label>Nome do produto:</label>
             <input type="text" name="nome" placeholder="Nome do produto" value=<c:out value="${nome}" />>
-            <br>
             <label>Valor:</label>
             <input type="text" name="valor" placeholder="Valor" value=<c:out value="${valor}" />>
-            <!--<input type="text" placeholder="Filiais disponiveis" value=<c:out value="${dtNascimentoAttr}" />>-->
+            <a href="/PiTads/produtos"><button type="Button" class="btn btn-red">Cancelar</button></a>
+            <button type="submit" class="btn btn-black">Salvar</button>
         </div>
-        </div>
-        <button type="submit" class="btn btn-black">Salvar</button>
     </form>
 </body>
 
