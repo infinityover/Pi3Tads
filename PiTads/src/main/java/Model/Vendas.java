@@ -17,12 +17,14 @@ public class Vendas {
     private String idFilial;
     private Timestamp dataOp;
     private Float valor;
+    private boolean vendaFinalizada;
 
-    public Vendas(int id, String idFilial, Timestamp dataOp, Float valor) {
+    public Vendas(int id, String idFilial, Timestamp dataOp, Float valor, boolean vendaFinalizada) {
         this.id = id;
         this.idFilial = idFilial;
         this.dataOp = dataOp;
         this.valor = valor;
+        this.vendaFinalizada = vendaFinalizada;
     }
 
     public int getId() {
@@ -55,6 +57,14 @@ public class Vendas {
 
     public void setValor(Float valor) {
         this.valor = valor;
+    }
+
+    public boolean isVendaFinalizada() {
+        return vendaFinalizada;
+    }
+
+    public void setVendaFinalizada(boolean vendaFinalizada) {
+        this.vendaFinalizada = vendaFinalizada;
     }
 
     

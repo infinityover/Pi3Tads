@@ -54,7 +54,8 @@ public class VendasDao {
                 String idFilial = rs.getString("idFilial");
                 Timestamp dataOp = rs.getTimestamp("dataOp");
                 Float valor = rs.getFloat("valor");
-                vendas.add(new Vendas(id, idFilial,dataOp,valor));
+                boolean vendaFinalizada = rs.getBoolean("vendaFinalizada");
+                vendas.add(new Vendas(id, idFilial,dataOp,valor,vendaFinalizada));
             }
             return vendas;
         } catch (ClassNotFoundException | SQLException e) {
@@ -78,7 +79,7 @@ public class VendasDao {
             ResultSet rs = comando.executeQuery();
             Vendas vendas = null;
             while (rs.next()) {
-                vendas = new Vendas(rs.getInt("id"), rs.getString("idFilial"), rs.getTimestamp("dataOp"), rs.getFloat("valor"));
+                vendas = new Vendas(rs.getInt("id"), rs.getString("idFilial"), rs.getTimestamp("dataOp"), rs.getFloat("valor"),rs.getBoolean("vendaFinalizada"));
             }
             return vendas;
         } catch (ClassNotFoundException | SQLException e) {

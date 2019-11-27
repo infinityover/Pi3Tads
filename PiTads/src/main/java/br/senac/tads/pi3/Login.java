@@ -82,6 +82,7 @@ public class Login extends HttpServlet {
                         session.setAttribute("perfil", usuario.getPerfil());
                         processRequest(request, response);
                     }else{
+                        request.setAttribute("loginError", true);
                         dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
                         dispatcher.forward(request, response);
                     }

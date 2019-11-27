@@ -54,13 +54,13 @@
             </div>
         </a>
 
-        <!-- <a href="./usuarios.html">
+        <a href="/PiTads/Usuarios">
             <div class="card">
                 <div class="card-body">
                     Usuarios
                 </div>
             </div>
-        </a> -->
+        </a>
         <!-- <a href="./estoque.html">
             <div class="card">
                 <div class="card-body">

@@ -43,6 +43,11 @@
             <div class="login-form centered">
                 <form method="post" action="${pageContext.request.contextPath}/Login" novalidate>
                     <div class="form-group">
+                    <c:if test="${loginError}">
+                        <div class="erro-input com-erro">
+                            Login e/ou senha incorreto(s).
+                        </div>
+                    </c:if>
                         <input type="text" name="Cpf" id="Cpf" class="form-control" placeholder="CPF" required <c:if test="${cpf}"> value='${cpf}' </c:if>>
                             <c:if test="${cpfError}">
                                     <div class="erro-input com-erro">

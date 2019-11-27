@@ -32,6 +32,7 @@ create table venda(
     idFilial varchar(30),
     dataOp timestamp,
     valor float(15,2),
+    vendaFinalizada boolean,
     CONSTRAINT vendaPk PRIMARY KEY (id)
 
 );

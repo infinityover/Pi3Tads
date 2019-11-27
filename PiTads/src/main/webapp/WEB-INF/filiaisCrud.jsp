@@ -23,55 +23,56 @@
     </head>
 
     <body>
+        <div class="corpo">
+            <form method="post" action="${pageContext.request.contextPath}/filialSalvar" class="form">
+                <div class="form-group">
+                    <div>
+                    <label>Código do filial:</label>
+                    <input type="text" placeholder="Código do filial" name="id" value=<c:out value="${id}" /> <c:if test="${not empty id}"><c:out value="readonly='readonly'"/></c:if>>
+                    </div>
+                    <div>
+                    <label>Apelido da filial:</label>
+                    <input type="text" placeholder="Apelido da filial" name="apelido" value=<c:out value="${apelido}" />>
+                    </div>
+                    <div>
+                    <label>Estado:</label>
+                    <select id="estado" name="estado" name="estado" value=<c:out value="${estado}" />>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                    </div>
+                    <label>Cidade:</label>
+                    <input type="text" placeholder="Cidade" name="cidade" value=<c:out value="${cidade}" />>
 
-        <form method="post" action="${pageContext.request.contextPath}/filialSalvar">
-            <div class="form-group">
-                <label>Código do filial:</label>
-                <input type="text" placeholder="Código do filial" name="id" value=<c:out value="${id}" /> <c:if test="${not empty id}"><c:out value="readonly='readonly'"/></c:if>>
-                <br>
-                <label>Apelido da filial:</label>
-                <input type="text" placeholder="Apelido da filial" name="apelido" value=<c:out value="${apelido}" />>
-                <br>
-                <label>Estado:</label>
-
-                <select id="estado" name="estado" name="estado" value=<c:out value="${estado}" />>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
-                <br>
-                <label>Cidade:</label>
-
-                <input type="text" placeholder="Cidade" name="cidade" value=<c:out value="${cidade}" />>
-
-            </div>
-        </div>
-        <button type="submit" class="btn btn-black">Enviar</button>
-    </form>
+                </div>
+            <button type="submit" class="btn btn-black">Enviar</button>
+        </form>
+    </div>
 </body>
 
 </html>

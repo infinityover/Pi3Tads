@@ -50,14 +50,11 @@
             </table>
         </c:when>
         <c:otherwise>
-            <p>Nenhum produto cadastrado</p>
+            <p>Nenhuma venda cadastrada, deseja cadastrar uma nova?</p>
         </c:otherwise>
     </c:choose>
 
-
-    <button type="button" class="btn btn-black">Cancelar</button>
-    
-    <a href="/PiTads/Home"><button type="button" class="btn btn-black">Finalizar</button></a>
+    <a href="/PiTads/Home"><button type="button" class="btn btn-black">Cancelar</button></a>
     <a href="/PiTads/VendasCrud?id=<c:out value='${VendaId}'/>"><button type="button" class="btn btn-black">Novo</button></a>
 </body>
 

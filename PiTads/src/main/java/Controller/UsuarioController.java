@@ -10,6 +10,7 @@ import Model.Usuario;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,9 +26,14 @@ public class UsuarioController {
         return usuariosDao.login(cpf, senha);
     }
 
-    public Usuario buscaUsuario(String id) {
+    public Usuario buscaUsuario(int id) {
         UsuariosDao usuariosDao = new UsuariosDao();
         return usuariosDao.pesquisarId(id);
+    }
+    
+    public ArrayList<Usuario> listaUsuario() {
+        UsuariosDao usuariosDao = new UsuariosDao();
+        return usuariosDao.listaUsuario();
     }
 
     public boolean usuarioSalvar(Usuario usuario) throws NoSuchAlgorithmException {

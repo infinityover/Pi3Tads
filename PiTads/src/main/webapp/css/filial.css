@@ -46,3 +46,16 @@
     color: #fff;
     padding: 0.375rem 1.75rem !important;
 }
+
+.form{
+    display: grid;
+    width: 400px;
+    justify-content: space-around;
+
+}
+
+.corpo{
+    display: grid;
+    justify-content: center;
+
+}
