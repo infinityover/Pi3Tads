@@ -29,8 +29,9 @@ public class VendasCrud extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         String idVenda = request.getParameter("idVenda");
@@ -55,7 +56,7 @@ public class VendasCrud extends HttpServlet {
         } else {
             VendasController vendasController = new VendasController();
             vendasController.vendaSalvarProdutoFinalizar(vendasController.buscaVenda(Integer.valueOf(idVenda)));
-            response.sendRedirect("/PiTads/VendasListar");
+            response.sendRedirect(contextPath + "/VendasListar");
 
         }
     }

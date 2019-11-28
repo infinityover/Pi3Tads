@@ -37,7 +37,7 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                RequestDispatcher dispatcher
+        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/home.jsp");
         dispatcher.forward(request, response);
     }
@@ -54,41 +54,41 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            //UsuarioController usuarioController = new UsuarioController();
-            Object cpf =  request.getParameter("Cpf");
-            Object senha = request.getParameter("Senha");
-            RequestDispatcher dispatcher;
-            boolean error = false;
-            if(cpf.toString().isEmpty()){
-                error = true;
-                request.setAttribute("cpfError", true);
-                request.setAttribute("cpf", cpf.toString());
-            }
-            if(senha.toString().isEmpty()){
-                error = true;
-                request.setAttribute("senhaError", true);
-            }
+        //UsuarioController usuarioController = new UsuarioController();
+        Object cpf = request.getParameter("Cpf");
+        Object senha = request.getParameter("Senha");
+        RequestDispatcher dispatcher;
+        boolean error = false;
+        if (cpf.toString().isEmpty()) {
+            error = true;
+            request.setAttribute("cpfError", true);
+            request.setAttribute("cpf", cpf.toString());
+        }
+        if (senha.toString().isEmpty()) {
+            error = true;
+            request.setAttribute("senhaError", true);
+        }
 
-            if(error){
-                dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
-                dispatcher.forward(request, response);
-            }else{
-                UsuarioController usuarioController = new UsuarioController();
-                try {
-                    Usuario usuario = usuarioController.loginUsuario(cpf.toString(), senha.toString());
-                    if(usuario != null){
-                        HttpSession session = request.getSession();
-                        session.setAttribute("usuario", cpf);
-                        session.setAttribute("perfil", usuario.getPerfil());
-                        processRequest(request, response);
-                    }else{
-                        request.setAttribute("loginError", true);
-                        dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
-                        dispatcher.forward(request, response);
-                    }
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger( Login.class.getName()).log(Level.SEVERE, null, ex);
+        if (error) {
+            dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            UsuarioController usuarioController = new UsuarioController();
+            try {
+                Usuario usuario = usuarioController.loginUsuario(cpf.toString(), senha.toString());
+                if (usuario != null) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuario", cpf);
+                    session.setAttribute("perfil", usuario.getPerfil());
+                    processRequest(request, response);
+                } else {
+                    request.setAttribute("loginError", true);
+                    dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+                    dispatcher.forward(request, response);
                 }
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
     }
 }

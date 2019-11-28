@@ -28,8 +28,9 @@ public class UsuariosSalvar extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         String id = request.getParameter("id");
@@ -49,6 +50,6 @@ public class UsuariosSalvar extends HttpServlet {
                 System.out.println(e.getMessage());
             }
         }
-        response.sendRedirect("/PiTads/Usuarios");
+        response.sendRedirect(contextPath + "/Usuarios");
     }
 }

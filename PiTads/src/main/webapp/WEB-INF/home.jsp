@@ -24,10 +24,10 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </a> -->
-            <a class="link" href="/PiTads/produtos">
+            <a class="link" href="${pageContext.request.contextPath}/produtos">
                 <div class="card">
                     <div class="card-body">
                         Produtos
@@ -47,14 +47,14 @@
                 </div>
             </a>
 
-            <a class="link" href="/PiTads/Filiais">
+            <a class="link" href="${pageContext.request.contextPath}/Filiais">
                 <div class="card">
                     <div class="card-body">
                         Filiais
                     </div>
                 </div>
             </a>
-            <a class="link" href="/PiTads/Vendas">
+            <a class="link" href="${pageContext.request.contextPath}/Vendas">
                 <div class="card">
                     <div class="card-body">
                         Vendas
@@ -63,7 +63,7 @@
                 </div>
             </a>
 
-            <a class="link" href="/PiTads/Usuarios">
+            <a class="link" href="${pageContext.request.contextPath}/Usuarios">
                 <div class="card">
                     <div class="card-body">
                         Usuarios

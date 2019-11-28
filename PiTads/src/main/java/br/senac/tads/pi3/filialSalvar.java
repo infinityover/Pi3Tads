@@ -27,8 +27,9 @@ public class filialSalvar extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         String id = request.getParameter("id");
@@ -43,6 +44,6 @@ public class filialSalvar extends HttpServlet {
                 filiaisController.filialSalvar(filial);
             }
         }
-        response.sendRedirect("/PiTads/Filiais");
+        response.sendRedirect(contextPath + "/Filiais");
     }
 }

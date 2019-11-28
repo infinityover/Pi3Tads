@@ -26,8 +26,9 @@ public class produtoExcluir extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         String id = request.getParameter("id");
@@ -35,6 +36,6 @@ public class produtoExcluir extends HttpServlet {
             ProdutoController produtoController = new ProdutoController();
             produtoController.produtoExcluir(id);
         }
-        response.sendRedirect("/PiTads/produtos");
+        response.sendRedirect(contextPath + "/produtos");
     }
 }

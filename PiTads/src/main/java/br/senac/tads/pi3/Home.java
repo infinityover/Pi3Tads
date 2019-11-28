@@ -24,11 +24,12 @@ public class Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
-        String sessao = (String)session.getAttribute("usuario");
+        String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         RequestDispatcher dispatcher
@@ -40,9 +41,10 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String sessao = (String)session.getAttribute("usuario");
+        String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         RequestDispatcher dispatcher

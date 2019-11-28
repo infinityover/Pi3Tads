@@ -16,29 +16,29 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
         <div class="body">
-            <a href="/PiTads/VendasListar">
+            <a href="${pageContext.request.contextPath}/VendasListar">
                 <div class="card">
                     <div class="card-body">
                         Efetuar venda
                     </div>
                 </div>
             </a>
-            <a href="/PiTads/VendasRelatorio">
+            <a href="${pageContext.request.contextPath}/VendasRelatorio">
                 <div class="card">
                     <div class="card-body">
                         Relatorio Geral
                     </div>
                 </div>
             </a>
-            <a href="/PiTads/VendasRelatorioFilial">
+            <a href="${pageContext.request.contextPath}/VendasRelatorioFilial">
                 <div class="card">
                     <div class="card-body">
                         Relatorio por Filial

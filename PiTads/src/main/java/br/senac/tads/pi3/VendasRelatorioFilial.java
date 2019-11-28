@@ -32,30 +32,30 @@ public class VendasRelatorioFilial extends HttpServlet {
 
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
-        
-        
+
         String filial = request.getParameter("filial");
-        
+
         FiliaisController filiaisController = new FiliaisController();
         ArrayList<Filial> filiais = filiaisController.listaFiliais();
         request.setAttribute("Filiais", filiais);
-            VendasController vendasController = new VendasController();
-        if(filial != null){
-            ArrayList<Vendas> produtoVendas = vendasController.listaVendasPorFilial(new Filial(filial.toString(),"", "", ""));
+        VendasController vendasController = new VendasController();
+        if (filial != null) {
+            ArrayList<Vendas> produtoVendas = vendasController.listaVendasPorFilial(new Filial(filial.toString(), "", "", ""));
             request.setAttribute("Vendas", produtoVendas);
-        }else{
+        } else {
             ArrayList<Vendas> produtoVendas = vendasController.listaVendas();
             request.setAttribute("Vendas", produtoVendas);
         }
-        
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/WEB-INF/vendasRelatorioFilial.jsp");
-            dispatcher.forward(request, response);
-        
+
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/WEB-INF/vendasRelatorioFilial.jsp");
+        dispatcher.forward(request, response);
+
     }
 
 }

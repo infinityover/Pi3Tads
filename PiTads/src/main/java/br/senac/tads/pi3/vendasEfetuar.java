@@ -34,24 +34,11 @@ public class vendasEfetuar extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
-
-//        
-//        VendasController vendasController =  new VendasController();
-//        int vendaId = Integer.valueOf(request.getParameter("VendaId"));
-//        if(vendaId == 0){
-//            vendaId = vendasController.vendaSalvar(new Vendas(0,"", new Timestamp(System.currentTimeMillis()), 0f));
-//        }            
-//        request.setAttribute("VendaId", vendaId);
-//        
-//        
-//        VendasProdutoDao produtoVendasDao = new VendasProdutoDao();
-//        
-//        ArrayList<VendasProduto> produtoVendas = produtoVendasDao.pesquisar(vendaId);
-//        request.setAttribute("Vendas", produtoVendas);
         FiliaisController filiaisController = new FiliaisController();
         ArrayList<Filial> filiais = filiaisController.listaFiliais();
         request.setAttribute("Filiais", filiais);

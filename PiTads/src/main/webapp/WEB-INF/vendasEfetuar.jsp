@@ -19,10 +19,10 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
@@ -49,8 +49,8 @@
                                 <td><c:out value="${venda.desconto}"/></td>
                                 <td><c:out value="${venda.valor} * ${venda.quantidade}"/></td>
                                 <td>
-                                <td><a href="/PiTads/VendasCrud?idVendaProduto=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
-                                <td><a href="/PiTads/VendasExcluir?idVendaProduto=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
+                                <td><a href="${pageContext.request.contextPath}/VendasCrud?idVendaProduto=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
+                                <td><a href="${pageContext.request.contextPath}/VendasExcluir?idVendaProduto=<c:out value='${venda.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -62,8 +62,8 @@
             </c:otherwise>
         </c:choose>
 
-        <a href="/PiTads/Home"><button type="button" class="btn btn-black">Cancelar</button></a>
-        <a href="/PiTads/VendasCrud?id=<c:out value='${VendaId}'/>"><button type="button" class="btn btn-black">Novo</button></a>
+        <a href="${pageContext.request.contextPath}/Home"><button type="button" class="btn btn-black">Cancelar</button></a>
+        <a href="${pageContext.request.contextPath}/VendasCrud?id=<c:out value='${VendaId}'/>"><button type="button" class="btn btn-black">Novo</button></a>
     </body>
 
 </html>

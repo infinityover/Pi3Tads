@@ -31,7 +31,7 @@ public class Creditos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                RequestDispatcher dispatcher
+        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/creditos.jsp");
         dispatcher.forward(request, response);
     }

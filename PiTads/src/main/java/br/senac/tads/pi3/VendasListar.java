@@ -30,8 +30,9 @@ public class VendasListar extends HttpServlet {
 
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         VendasController vendasController = new VendasController();

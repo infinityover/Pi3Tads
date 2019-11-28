@@ -18,10 +18,10 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
@@ -42,7 +42,7 @@
                     <option value="Administrativo" <c:if test="${estado == 'Administrativo'}"><c:out value="selected"/></c:if>>Administrativo</option>
                     <option value="Produto" <c:if test="${estado == 'Produto'}"><c:out value="selected"/></c:if>>Produto</option>
                 </select>
-                <a href="/PiTads/Usuarios"><button type="Button" class="btn btn-red">Cancelar</button></a>
+                <a href="${pageContext.request.contextPath}/Usuarios"><button type="Button" class="btn btn-red">Cancelar</button></a>
                 <button type="submit" class="btn btn-black">Salvar</button>
             </div>
         </form>

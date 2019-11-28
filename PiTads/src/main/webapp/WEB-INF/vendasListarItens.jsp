@@ -19,10 +19,10 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
@@ -60,9 +60,9 @@
                 </c:otherwise>
             </c:choose>
             <div>
-                <a href="/PiTads/Vendas"><button type="button" class="btn btn-black">Voltar</button></a>
-                <a href="/PiTads/VendasCrud"><button type="Submit" name="envio" value="novo" class="btn btn-black">Novo</button></a>
-                <a href="/PiTads/VendasFinalizar"><button type="Submit" name="envio" value="finalizar" class="btn btn-black">Finalizar</button></a>
+                <a href="${pageContext.request.contextPath}/Vendas"><button type="button" class="btn btn-black">Voltar</button></a>
+                <a href="${pageContext.request.contextPath}/VendasCrud"><button type="Submit" name="envio" value="novo" class="btn btn-black">Novo</button></a>
+                <a href="${pageContext.request.contextPath}/VendasFinalizar"><button type="Submit" name="envio" value="finalizar" class="btn btn-black">Finalizar</button></a>
             </div>
         </form>
     </body>

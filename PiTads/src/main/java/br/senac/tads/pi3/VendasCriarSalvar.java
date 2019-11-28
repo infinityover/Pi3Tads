@@ -28,17 +28,17 @@ public class VendasCriarSalvar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         VendasController vendasController = new VendasController();
         int idVenda = vendasController.vendaSalvar(new Vendas(0, request.getParameter("filial"), new Timestamp(System.currentTimeMillis()), 0f, false));
 
-        response.sendRedirect("/PiTads/GerenciarVenda?id=" + String.valueOf(idVenda));
+        response.sendRedirect(contextPath + "/GerenciarVenda?id=" + String.valueOf(idVenda));
 
     }
 

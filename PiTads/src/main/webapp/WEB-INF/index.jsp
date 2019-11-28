@@ -68,7 +68,7 @@
                             <input type="checkbox" class="" placeholder="Senha" <c:if test="${senhaError}"> value='${senha}' </c:if>>
                             <label>Lembrar-me</label>
                         </div>
-                        <a href="./esqueci.html" class="forgot-pass">Esqueci minha senha</a>
+                        <!--<a href="./esqueci.html" class="forgot-pass">Esqueci minha senha</a>-->
 
                     </div>
                     <br>

@@ -33,8 +33,9 @@ public class vendasProdutoSalvar extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
 
@@ -59,6 +60,6 @@ public class vendasProdutoSalvar extends HttpServlet {
                 vendasProdutodao.salvar(vendasProduto);
             }
         }
-        response.sendRedirect("/PiTads/GerenciarVenda?id=" + request.getParameter("idVenda"));
+        response.sendRedirect(contextPath + "/GerenciarVenda?id=" + request.getParameter("idVenda"));
     }
 }

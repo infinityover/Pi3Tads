@@ -21,10 +21,10 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
@@ -47,8 +47,8 @@
                                 <td><c:out value="${filial.estado}"/></td>
                                 <td><c:out value="${filial.cidade}"/></td>
                                 <td>
-                                <td><a href="/PiTads/FiliaisCrud?id=<c:out value='${filial.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
-                                <td><a href="/PiTads/FiliaisCrud?id=<c:out value='${filial.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
+                                <td><a href="${pageContext.request.contextPath}/FiliaisCrud?id=<c:out value='${filial.id}'/>" ><button type="button" class="btn btn-black">Editar</button></a></td>
+                                <td><a href="${pageContext.request.contextPath}/FiliaisCrud?id=<c:out value='${filial.id}'/>" ><button type="button" class="btn btn-red">Excluir</button></a></td>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -59,8 +59,8 @@
                 <p>Nenhuma filial cadastrada</p>
             </c:otherwise>
         </c:choose>
-    <a href="/PiTads/Home"><button type="button" class="btn btn-black">Voltar</button></a>
-    <a href="/PiTads/FiliaisCrud"><button type="button" class="btn btn-black">Novo</button></a>
+    <a href="${pageContext.request.contextPath}/Home"><button type="button" class="btn btn-black">Voltar</button></a>
+    <a href="${pageContext.request.contextPath}/FiliaisCrud"><button type="button" class="btn btn-black">Novo</button></a>
     </body>
 
 </html>

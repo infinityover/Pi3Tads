@@ -56,13 +56,14 @@ public class Deslogar extends HttpServlet {
             throws ServletException, IOException {
             //UsuarioController usuarioController = new UsuarioController();
             HttpSession session = request.getSession();
-            String sessao = (String)session.getAttribute("usuario");
-            if (sessao == null) {
-                response.sendRedirect("/PiTads");
-                return;
-            }
+        String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
+        if (sessao == null) {
+            response.sendRedirect(contextPath);
+            return;
+        }
             
             session.invalidate();
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
     }
 }

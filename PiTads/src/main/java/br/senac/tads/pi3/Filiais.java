@@ -57,9 +57,10 @@ public class Filiais extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        String sessao = (String)session.getAttribute("usuario");
+        String sessao = (String) session.getAttribute("usuario");
+        String contextPath = request.getContextPath();
         if (sessao == null) {
-            response.sendRedirect("/PiTads");
+            response.sendRedirect(contextPath);
             return;
         }
         FiliaisController filiaisController = new FiliaisController();

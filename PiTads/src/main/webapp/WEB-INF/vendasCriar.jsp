@@ -18,10 +18,10 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Tades</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
                 </ul>
             </div>
         </nav>
@@ -35,7 +35,7 @@
                         <option value=<c:out value="${filial.id}"/>><c:out value="${filial.apelido}"/></option>
                     </c:forEach>
                 </select>
-                <a href="/PiTads/VendasListar"><button type="Button" class="btn btn-red">Cancelar</button></a>
+                <a href="${pageContext.request.contextPath}/VendasListar"><button type="Button" class="btn btn-red">Cancelar</button></a>
                 <button type="submit" class="btn btn-black">Salvar</button>
             </div>
         </form>
