@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author paulobelfi
  */
-@WebServlet(name = "vendasListar", urlPatterns = {"/vendasListar"})
-public class vendasListar extends HttpServlet {
+@WebServlet(name = "VendasListar", urlPatterns = {"/VendasListar"})
+public class VendasListar extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -50,7 +50,7 @@ public class UsuarioController {
         MessageDigest m=MessageDigest.getInstance("MD5");
         m.update(usuario.getSenha().getBytes(),0,usuario.getSenha().length());
         usuario.setSenha(new BigInteger(1,m.digest()).toString(16));
-        return usuariosDao.salvar(usuario);
+        return usuariosDao.editar(usuario);
     }
 
     public boolean usuarioExcluir(int id) {

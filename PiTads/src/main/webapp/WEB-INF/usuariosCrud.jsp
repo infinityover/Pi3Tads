@@ -17,7 +17,7 @@
 </head>
 
 <body>
-        <form method="post" action="${pageContext.request.contextPath}/produtoSalvar" class="form">
+        <form method="post" action="${pageContext.request.contextPath}/UsuariosSalvar" class="form">
         <div class="corpo">
                 <input type="hidden" name="id" placeholder="id" value=<c:out value="${id}" />>
                 <label>CPF:</label>
@@ -25,7 +25,7 @@
                 <label>Senha</label>
                 <input type="password" name="senha" placeholder="Senha" value=<c:out value="${senha}" />>
                 <label>Confirme a senha:</label>
-                <input type="text" name="senha" placeholder="Confirme a senha:">
+                <input type="password" name="senha" placeholder="Confirme a senha:">
                 <label>Perfil:</label>
                 <select id="estado" name="perfil" name="perfil">
                     <option value="Gerente" <c:if test="${estado == 'Gerente'}"><c:out value="selected"/></c:if>>Gerente</option>
@@ -34,7 +34,7 @@
                     <option value="Administrativo" <c:if test="${estado == 'Administrativo'}"><c:out value="selected"/></c:if>>Administrativo</option>
                     <option value="Produto" <c:if test="${estado == 'Produto'}"><c:out value="selected"/></c:if>>Produto</option>
                 </select>
-            <a href="/PiTads/Filiais"><button type="Button" class="btn btn-red">Cancelar</button></a>
+            <a href="/PiTads/Usuarios"><button type="Button" class="btn btn-red">Cancelar</button></a>
             <button type="submit" class="btn btn-black">Salvar</button>
     </div>
         </form>

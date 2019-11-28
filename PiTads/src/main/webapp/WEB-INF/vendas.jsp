@@ -18,7 +18,7 @@
 
 <body>
     <div class="body">
-        <a href="/PiTads/VendasEfetuar">
+        <a href="/PiTads/VendasListar">
             <div class="card">
                 <div class="card-body">
                     Efetuar venda

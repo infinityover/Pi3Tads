@@ -123,9 +123,9 @@ public class UsuariosDao {
             Class.forName(DRIVER);
             conexao = conectaBanco();
             PreparedStatement comando = conexao.prepareStatement("INSERT INTO usuarios(cpf, perfil, senha) values (?,?,?);");
-            comando.setString(2, usuario.getCpf());
-            comando.setString(3, usuario.getPerfil());
-            comando.setString(4, usuario.getSenha());
+            comando.setString(1, usuario.getCpf());
+            comando.setString(2, usuario.getPerfil());
+            comando.setString(3, usuario.getSenha());
             if (comando.executeUpdate() > 0) {
                 return true;
             }
@@ -148,8 +148,8 @@ public class UsuariosDao {
             conexao = conectaBanco();
             PreparedStatement comando = conexao.prepareStatement("UPDATE usuarios set cpf = ?, senha= ?, perfil = ? where id = ?");
             comando.setString(1, usuario.getCpf());
-            comando.setString(2, usuario.getPerfil());
-            comando.setString(3, usuario.getSenha());
+            comando.setString(2, usuario.getSenha());
+            comando.setString(3, usuario.getPerfil());
             comando.setInt(4, usuario.getId());
             if (comando.executeUpdate() > 0) {
                 return true;

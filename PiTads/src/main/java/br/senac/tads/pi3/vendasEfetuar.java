@@ -5,8 +5,10 @@
  */
 package br.senac.tads.pi3;
 
+import Controller.FiliaisController;
 import Controller.VendasController;
 import DAO.VendasProdutoDao;
+import Model.Filial;
 import Model.Vendas;
 import Model.VendasProduto;
 import java.io.IOException;
@@ -43,8 +45,11 @@ public class vendasEfetuar extends HttpServlet {
 //        
 //        ArrayList<VendasProduto> produtoVendas = produtoVendasDao.pesquisar(vendaId);
 //        request.setAttribute("Vendas", produtoVendas);
+        FiliaisController filiaisController = new FiliaisController();
+        ArrayList<Filial> filiais = filiaisController.listaFiliais();
+        request.setAttribute("Filiais", filiais);
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/vendasLista.jsp");
+                = request.getRequestDispatcher("/WEB-INF/vendasCriar.jsp");
         dispatcher.forward(request, response);
         
     }
