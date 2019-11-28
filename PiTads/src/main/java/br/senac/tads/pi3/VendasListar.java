@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,14 +28,19 @@ public class VendasListar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
-        VendasController vendasController =  new VendasController();
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
+        VendasController vendasController = new VendasController();
         ArrayList<Vendas> produtoVendas = vendasController.listaVendas();
         request.setAttribute("Vendas", produtoVendas);
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/WEB-INF/vendasLista.jsp");
         dispatcher.forward(request, response);
-        
+
     }
 
 }

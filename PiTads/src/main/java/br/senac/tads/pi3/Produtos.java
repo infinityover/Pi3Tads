@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,6 +52,13 @@ public class Produtos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
         ProdutoController produtoController = new ProdutoController();
         ArrayList<Produto> produtos = produtoController.listaProdutos();
         request.setAttribute("Produtos", produtos);

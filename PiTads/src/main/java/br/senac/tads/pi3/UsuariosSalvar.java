@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,11 +26,17 @@ public class UsuariosSalvar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
         String id = request.getParameter("id");
         if (id != null) {
-            try{
+            try {
                 UsuarioController usuarioController = new UsuarioController();
-                
+
                 if (!id.isEmpty()) {
                     Usuario usuario = usuarioController.buscaUsuario(Integer.valueOf(id));
                     usuario = new Usuario(Integer.valueOf(request.getParameter("id")), request.getParameter("cpf"), request.getParameter("senha"), request.getParameter("perfil"));
@@ -38,7 +45,7 @@ public class UsuariosSalvar extends HttpServlet {
                     Usuario usuario = new Usuario(0, request.getParameter("cpf"), request.getParameter("senha"), request.getParameter("perfil"));
                     usuarioController.usuarioSalvar(usuario);
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }

@@ -5,10 +5,10 @@
  */
 package br.senac.tads.pi3;
 
-import Controller.ProdutoController;
-import Controller.UsuarioController;
-import Model.Usuario;
+import Controller.VendasController;
+import Model.Vendas;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,32 +19,28 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author paulo
+ * @author paulobelfi
  */
-@WebServlet(name = "UsuariosCrud", urlPatterns = {"/UsuariosCrud"})
-public class UsuariosCrud extends HttpServlet {
+@WebServlet(name = "VendasRelatorio", urlPatterns = {"/VendasRelatorio"})
+public class VendasRelatorio extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         String sessao = (String) session.getAttribute("usuario");
         if (sessao == null) {
             response.sendRedirect("/PiTads");
             return;
         }
-        String id = request.getParameter("id");
-        if (id != null) {
-            UsuarioController usuarioController = new UsuarioController();
-            int idUs = Integer.valueOf(id);
-            Usuario produto = usuarioController.buscaUsuario(idUs);
-
-            request.setAttribute("id", produto.getId());
-            request.setAttribute("cpf", produto.getCpf());
-            request.setAttribute("senha", produto.getSenha());
-        }
+        VendasController vendasController = new VendasController();
+        ArrayList<Vendas> produtoVendas = vendasController.listaVendas();
+        request.setAttribute("Vendas", produtoVendas);
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/usuariosCrud.jsp");
+                = request.getRequestDispatcher("/WEB-INF/vendasRelatorio.jsp");
         dispatcher.forward(request, response);
+
     }
+
 }

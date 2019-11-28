@@ -1,7 +1,10 @@
-<!DOCTYPE html>
+<%-- 
+    Document   : index
+    Created on : Oct 19, 2019, 1:18:48 PM
+    Author     : paulo
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 
 <html>
 
@@ -10,8 +13,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <style><%@include file="../css/produtos.css"%></style>
+
         <title>Tades</title>
+        <style><%@include file="../css/index.css"%></style>
+
     </head>
 
     <body>
@@ -20,25 +25,22 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/PiTads/Home">Tades</a>
                 </div>
-                <ul class="nav navbar-nav navbar-right">
+<!--                <ul class="nav navbar-nav navbar-right">
                     <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
-                </ul>
+                </ul>-->
             </div>
         </nav>
-        <form method="post" action="${pageContext.request.contextPath}/VendasCriarSalvar" class="form">
-            <div class="corpo">
-
-                <input type="hidden" name="idVenda">
-                <label>Para qual filial a venda será realizada?</label>
-                <select id="filial" name="filial" name="filial">
-                    <c:forEach items="${Filiais}" var="filial">
-                        <option value=<c:out value="${filial.id}"/>><c:out value="${filial.apelido}"/></option>
-                    </c:forEach>
-                </select>
-                <a href="/PiTads/VendasListar"><button type="Button" class="btn btn-red">Cancelar</button></a>
-                <button type="submit" class="btn btn-black">Salvar</button>
-            </div>
-        </form>
+        <h2>Diretor Criativo: Paulo Belfi</h2>
+        <h2>Analista principal: Paulo Belfi</h2>
+        <h2>Desenvolvedor: Paulo Belfi</h2>
+        <h2>Racicionio logico: Paulo Belfi</h2>
+        <h2>FullStack: Paulo Belfi</h2>
+        <h2>Front-End: Paulo Belfi</h2>
+        <h2>Back-End: Paulo Belfi</h2>
+        <h2>Faz tudo: Paulo Belfi</h2>
+        <h2>Marido de alugel: Paulo Belfi</h2>
+        <h2>Designer: Paulo Belfi</h2>
+        <h2>Traficante: Paulo Belfi</h2>
     </body>
 
 </html>

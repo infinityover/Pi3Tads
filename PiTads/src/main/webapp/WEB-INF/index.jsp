@@ -77,6 +77,7 @@
             </div>
         </div>
     </div>
+    <a href="Creditos" style="left: 10px;bottom: 10px;position: fixed;">Créditos</a>
 </body>
 
 </html>

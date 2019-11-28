@@ -3,36 +3,49 @@
 
 <html>
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
-    <!-- <link rel="stylesheet" href="./assets/index.css"> -->
-    
+    <head>
+
         <style><%@include file="../css/vendas/vendas.css"%></style>
-    <title>Tades</title>
-
-</head>
-
-<body>
-    <div class="body">
-        <a href="/PiTads/VendasListar">
-            <div class="card">
-                <div class="card-body">
-                    Efetuar venda
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>Tades</title>
+        <link rel="shortcut icon" href="Logo.ico" />
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
                 </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                </ul>
             </div>
-        </a>
-        <a href="/PiTads/VendasRelatorio">
-            <div class="card">
-                <div class="card-body">
-                    Relatorio
+        </nav>
+        <div class="body">
+            <a href="/PiTads/VendasListar">
+                <div class="card">
+                    <div class="card-body">
+                        Efetuar venda
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
-</body>
+            </a>
+            <a href="/PiTads/VendasRelatorio">
+                <div class="card">
+                    <div class="card-body">
+                        Relatorio Geral
+                    </div>
+                </div>
+            </a>
+            <a href="/PiTads/VendasRelatorioFilial">
+                <div class="card">
+                    <div class="card-body">
+                        Relatorio por Filial
+                    </div>
+                </div>
+            </a>
+        </div>
+    </body>
 
 </html>

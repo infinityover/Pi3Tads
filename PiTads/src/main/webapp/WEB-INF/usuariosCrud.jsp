@@ -5,20 +5,28 @@
 
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <style><%@include file="../css/produtos.css"%></style>
-    <title>Tades</title>
-</head>
+        <title>Tades</title>
+    </head>
 
-<body>
+    <body>       
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                </ul>
+            </div>
+        </nav>
         <form method="post" action="${pageContext.request.contextPath}/UsuariosSalvar" class="form">
-        <div class="corpo">
+            <div class="corpo">
                 <input type="hidden" name="id" placeholder="id" value=<c:out value="${id}" />>
                 <label>CPF:</label>
                 <input type="text" name="cpf" placeholder="CPF do usuario" value=<c:out value="${cpf}" />>
@@ -34,10 +42,10 @@
                     <option value="Administrativo" <c:if test="${estado == 'Administrativo'}"><c:out value="selected"/></c:if>>Administrativo</option>
                     <option value="Produto" <c:if test="${estado == 'Produto'}"><c:out value="selected"/></c:if>>Produto</option>
                 </select>
-            <a href="/PiTads/Usuarios"><button type="Button" class="btn btn-red">Cancelar</button></a>
-            <button type="submit" class="btn btn-black">Salvar</button>
-    </div>
+                <a href="/PiTads/Usuarios"><button type="Button" class="btn btn-red">Cancelar</button></a>
+                <button type="submit" class="btn btn-black">Salvar</button>
+            </div>
         </form>
-</body>
+    </body>
 
 </html>

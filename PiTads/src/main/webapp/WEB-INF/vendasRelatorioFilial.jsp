@@ -27,6 +27,16 @@
                 </ul>
             </div>
         </nav>
+        
+        <form method="get" action="${pageContext.request.contextPath}/VendasRelatorioFilial">
+            <label>Filial:</label>
+            <select id="filial" name="filial" name="filial">
+                <c:forEach items="${Filiais}" var="filial">
+                <option value=<c:out value="${filial.id}"/>><c:out value="${filial.apelido}"/></option>
+                </c:forEach>
+            </select>
+            <button type="submit" class="btn btn-black" style="right: 10px;position: fixed;">Filtar</button>
+        </form>
         <c:choose>
             <c:when test="${not empty Vendas}">
                 <table class="table table-striped">

@@ -5,39 +5,42 @@
 
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <style><%@include file="../css/produtos.css"%></style>
-    <title>Tades</title>
-</head>
+        <title>Tades</title>
+    </head>
 
-<body>
-
-    <form method="post" action="${pageContext.request.contextPath}/vendasProdutoSalvar">
-        <div class="form-group">
-            <input type="hidden" name="idVenda"value=<c:out value="${param.id}" />>
-            <input type="hidden" name="vendaProduto"value=<c:out value="${id}" />>
-            <label>Código do produto:</label>
-            <input type="text" name="idProduto" placeholder="Código do produto" value=<c:out value="${idProduto}" /> <c:if test="${not empty idProduto}"><c:out value="readonly='readonly'"/></c:if>>
-            <br>
-            <label>Valor:</label>
-            <input type="text" name="valor" placeholder="Valor" value=<c:out value="${valor}" />>
-            <br>
-            <label>Quantidade:</label>
-            <input type="text" name="quantidade" placeholder="Quantidade" value=<c:out value="${quantidade}" />>
-            <br>
-            <label>Desconto:</label>
-            <input type="text" name="desconto" placeholder="Desconto" value=<c:out value="${desconto}" />>
-            <!--<input type="text" placeholder="Filiais disponiveis" value=<c:out value="${dtNascimentoAttr}" />>-->
-        </div>
-        </div>
-        <button type="submit" class="btn btn-black">Salvar</button>
-    </form>
-</body>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                </ul>
+            </div>
+        </nav>
+        <form method="post" action="${pageContext.request.contextPath}/vendasProdutoSalvar"class="form">
+            <div class="corpo">
+                <input type="hidden" name="idVenda"value=<c:out value="${idVenda}" />>
+                <input type="hidden" name="vendaProduto"value=<c:out value="${idVendaProduto}" />>
+                <label>Código do produto:</label>
+                <input type="text" name="idProduto" placeholder="Código do produto" value=<c:out value="${idProduto}" /> <c:if test="${not empty idProduto}"><c:out value="readonly='readonly'"/></c:if>>
+                    <label>Valor:</label>
+                    <input type="text" name="valor" placeholder="Valor" value=<c:out value="${valor}" />>
+                <label>Quantidade:</label>
+                <input type="text" name="quantidade" placeholder="Quantidade" value=<c:out value="${quantidade}" />>
+                <label>Desconto:</label>
+                <input type="text" name="desconto" placeholder="Desconto" value=<c:out value="${desconto}" />>
+                <a href="/PiTads/GerenciarVenda?id="<c:out value="${idVenda}" />><button type="Button" class="btn btn-red">Cancelar</button></a>
+                <button type="submit" class="btn btn-black">Salvar</button>
+            </div>
+        </form>
+    </body>
 
 </html>

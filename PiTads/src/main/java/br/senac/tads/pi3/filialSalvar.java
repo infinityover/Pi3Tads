@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -24,15 +25,21 @@ public class filialSalvar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
         String id = request.getParameter("id");
         if (id != null) {
             FiliaisController filiaisController = new FiliaisController();
             Filial filial = filiaisController.buscaFilial(id);
             if (filial != null) {
-                filial = new Filial(request.getParameter("id"), request.getParameter("apelido"), request.getParameter("estado") , request.getParameter("cidade"));
+                filial = new Filial(request.getParameter("id"), request.getParameter("apelido"), request.getParameter("estado"), request.getParameter("cidade"));
                 filiaisController.filialEditar(filial);
             } else {
-                filial = new Filial(request.getParameter("id"), request.getParameter("apelido"), request.getParameter("estado") , request.getParameter("cidade"));
+                filial = new Filial(request.getParameter("id"), request.getParameter("apelido"), request.getParameter("estado"), request.getParameter("cidade"));
                 filiaisController.filialSalvar(filial);
             }
         }

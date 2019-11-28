@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,17 +26,23 @@ public class ProdutoCrud extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String id = request.getParameter("id");
-            if(id != null){
-                ProdutoController produtoController = new ProdutoController();
-                Produto produto = produtoController.buscaProduto(id);
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
+        String id = request.getParameter("id");
+        if (id != null) {
+            ProdutoController produtoController = new ProdutoController();
+            Produto produto = produtoController.buscaProduto(id);
 
-                request.setAttribute("id", produto.getId());
-                request.setAttribute("nome", produto.getNome());
-                request.setAttribute("valor", produto.getValor());
-            }
-             RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/WEB-INF/produtoCrud.jsp");
+            request.setAttribute("id", produto.getId());
+            request.setAttribute("nome", produto.getNome());
+            request.setAttribute("valor", produto.getValor());
+        }
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/WEB-INF/produtoCrud.jsp");
         dispatcher.forward(request, response);
     }
 }

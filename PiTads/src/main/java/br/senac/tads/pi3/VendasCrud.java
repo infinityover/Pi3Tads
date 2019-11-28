@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3;
 
+import Controller.VendasController;
 import Controller.VendasProdutoController;
 import Model.VendasProduto;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -23,12 +25,22 @@ import javax.servlet.http.HttpServletResponse;
 public class VendasCrud extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String id = request.getParameter("idVendaProduto");
-            if(id != null){
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
+        String idVenda = request.getParameter("idVenda");
+        String idVendaProduto = request.getParameter("idVendaProduto");
+        String tipo = request.getParameter("envio");
+
+        if (tipo != null && tipo.equals("novo")) {
+            if (idVendaProduto != null) {
                 VendasProdutoController vendasProdutoController = new VendasProdutoController();
-                VendasProduto vendasProduto = vendasProdutoController.buscaVendaProduto(Integer.valueOf(id));
+                VendasProduto vendasProduto = vendasProdutoController.buscaVendaProduto(Integer.valueOf(idVendaProduto));
 
                 request.setAttribute("id", vendasProduto.getId());
                 request.setAttribute("idProduto", vendasProduto.getIdProduto());
@@ -36,8 +48,15 @@ public class VendasCrud extends HttpServlet {
                 request.setAttribute("quantidade", vendasProduto.getQuantidade());
                 request.setAttribute("valor", vendasProduto.getValor());
             }
-             RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/WEB-INF/vendasCrud.jsp");
-        dispatcher.forward(request, response);
+            request.setAttribute("idVenda", idVenda);
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/WEB-INF/vendasCrud.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            VendasController vendasController = new VendasController();
+            vendasController.vendaSalvarProdutoFinalizar(vendasController.buscaVenda(Integer.valueOf(idVenda)));
+            response.sendRedirect("/PiTads/VendasListar");
+
+        }
     }
 }

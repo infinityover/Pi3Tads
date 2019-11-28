@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,12 +29,17 @@ public class VendasCriarSalvar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
-        VendasController vendasController =  new VendasController();
-        int idVenda =  vendasController.vendaSalvar(new Vendas(0, request.getParameter("filial"), new Timestamp(System.currentTimeMillis()),0f, false));
-        
-        response.sendRedirect("/PiTads/GerenciarVenda?id="+ String.valueOf(idVenda));
-        
+        HttpSession session = request.getSession();
+        String sessao = (String) session.getAttribute("usuario");
+        if (sessao == null) {
+            response.sendRedirect("/PiTads");
+            return;
+        }
+        VendasController vendasController = new VendasController();
+        int idVenda = vendasController.vendaSalvar(new Vendas(0, request.getParameter("filial"), new Timestamp(System.currentTimeMillis()), 0f, false));
+
+        response.sendRedirect("/PiTads/GerenciarVenda?id=" + String.valueOf(idVenda));
+
     }
 
 }

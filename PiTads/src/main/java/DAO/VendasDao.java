@@ -6,6 +6,7 @@
 package DAO;
 
 import Model.Vendas;
+import Model.Filial;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -46,6 +47,36 @@ public class VendasDao {
             conexao = conectaBanco();
             PreparedStatement comando = conexao.prepareStatement("SELECT * FROM Venda;");
 
+            ResultSet rs = comando.executeQuery();
+
+            ArrayList<Vendas> vendas = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String idFilial = rs.getString("idFilial");
+                Timestamp dataOp = rs.getTimestamp("dataOp");
+                Float valor = rs.getFloat("valor");
+                boolean vendaFinalizada = rs.getBoolean("vendaFinalizada");
+                vendas.add(new Vendas(id, idFilial,dataOp,valor,vendaFinalizada));
+            }
+            return vendas;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return null;
+    }
+    
+        public ArrayList<Vendas> pesquisarPorFilial(Filial filial) {
+        try {
+            Class.forName(DRIVER);
+            conexao = conectaBanco();
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM Venda where idFilial = ?;");
+            comando.setString(1, filial.getId());
             ResultSet rs = comando.executeQuery();
 
             ArrayList<Vendas> vendas = new ArrayList<>();
@@ -159,6 +190,30 @@ public class VendasDao {
             vendasDao.excluirVenda(id);
             PreparedStatement comando = conexao.prepareStatement("DELETE FROM venda where id = ?;");
             comando.setInt(1, id);
+            if (comando.executeUpdate() > 0) {
+                return true;
+            }
+            return false;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return false;
+    }
+    
+        public boolean vendasFinalizar(Vendas vendas) {
+        try {
+            Class.forName(DRIVER);
+            conexao = conectaBanco();
+            PreparedStatement comando = conexao.prepareStatement("UPDATE venda set valor = ?, vendaFinalizada = ? where id = ?");
+            comando.setFloat(1, vendas.getValor());
+            comando.setBoolean(2, true);
+            comando.setInt(3, vendas.getId());
             if (comando.executeUpdate() > 0) {
                 return true;
             }

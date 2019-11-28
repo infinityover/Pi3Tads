@@ -5,27 +5,20 @@
  */
 package br.senac.tads.pi3;
 
-import Controller.FiliaisController;
-import Controller.ProdutoController;
-import Model.Filial;
-import Model.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author paulo
  */
-@WebServlet(name = "Filiais", urlPatterns = {"/Filiais"})
-public class Filiais extends HttpServlet {
+@WebServlet(name = "Creditos", urlPatterns = {"/Creditos"})
+public class Creditos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,8 +31,8 @@ public class Filiais extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/filiaisLista.jsp");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/WEB-INF/creditos.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -55,16 +48,6 @@ public class Filiais extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-        String sessao = (String)session.getAttribute("usuario");
-        if (sessao == null) {
-            response.sendRedirect("/PiTads");
-            return;
-        }
-        FiliaisController filiaisController = new FiliaisController();
-        ArrayList<Filial> filiais = filiaisController.listaFiliais();
-        request.setAttribute("Filiais", filiais);
         processRequest(request, response);
     }
 }

@@ -9,66 +9,75 @@
 
 <html>
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
-    <!-- <link rel="stylesheet" href="./assets/index.css"> -->
-    <style><%@include file="../css/home.css"%></style>
-    <title>Tades</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- <link rel="stylesheet" href="./assets/index.css"> -->
+        <style><%@include file="../css/home.css"%></style>
+        <title>Tades</title>
 
-</head>
+    </head>
 
-<body>
-    <div class="body">
-        <!-- <a href="./financeiro.html">
-            <div class="card">
-                <div class="card-body">
-                    Financeiro
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/PiTads/Home">Tades</a>
                 </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/PiTads/Deslogar"><span class="glyphicon glyphicon-log-in"></span> Deslogar</a></li>
+                </ul>
             </div>
-        </a> -->
-        <a href="/PiTads/produtos">
-            <div class="card">
-                <div class="card-body">
-                    Produtos
+        </nav>
+        <div class="body">
+            <!-- <a href="./financeiro.html">
+                <div class="card">
+                    <div class="card-body">
+                        Financeiro
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a> -->
+            <a class="link" href="/PiTads/produtos">
+                <div class="card">
+                    <div class="card-body">
+                        Produtos
+                    </div>
+                </div>
+            </a>
 
-        <a href="/PiTads/Filiais">
-            <div class="card">
-                <div class="card-body">
-                    Filiais
+            <a class="link" href="/PiTads/Filiais">
+                <div class="card">
+                    <div class="card-body">
+                        Filiais
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a href="/PiTads/Vendas">
-            <div class="card">
-                <div class="card-body">
-                    Vendas
-                </div>
+            </a>
+            <a class="link" href="/PiTads/Vendas">
+                <div class="card">
+                    <div class="card-body">
+                        Vendas
+                    </div>
 
-            </div>
-        </a>
+                </div>
+            </a>
 
-        <a href="/PiTads/Usuarios">
-            <div class="card">
-                <div class="card-body">
-                    Usuarios
+            <a class="link" href="/PiTads/Usuarios">
+                <div class="card">
+                    <div class="card-body">
+                        Usuarios
+                    </div>
                 </div>
-            </div>
-        </a>
-        <!-- <a href="./estoque.html">
-            <div class="card">
-                <div class="card-body">
-                    Estoque
+            </a>
+            <!-- <a href="./estoque.html">
+                <div class="card">
+                    <div class="card-body">
+                        Estoque
+                    </div>
                 </div>
-            </div>
-        </a> -->
-    </div>
-</body>
+            </a> -->
+        </div>
+    </body>
 
 </html>

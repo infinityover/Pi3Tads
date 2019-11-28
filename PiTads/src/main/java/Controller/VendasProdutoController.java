@@ -5,8 +5,12 @@
  */
 package Controller;
 
+import DAO.ProdutoDao;
 import DAO.VendasProdutoDao;
 import Model.VendasProduto;
+import Model.Produto;
+import Model.VendasProdutoUserView;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +22,26 @@ public class VendasProdutoController {
     public ArrayList<VendasProduto> listaVendasProduto(int idVenda) {
         VendasProdutoDao vendasProdutodao = new VendasProdutoDao();
         return vendasProdutodao.pesquisar(idVenda);
+    }
+    
+        public ArrayList<VendasProdutoUserView> listaVendasProdutoComNome(int idVenda) {
+        VendasProdutoDao vendasProdutodao = new VendasProdutoDao();
+        ProdutoDao produtodao = new ProdutoDao();
+        ArrayList<VendasProduto> itens = vendasProdutodao.pesquisar(idVenda);
+        ArrayList<VendasProdutoUserView> retorno = new ArrayList<>();
+            for (VendasProduto iten : itens) {
+                Produto prod = produtodao.pesquisarId(iten.getIdProduto());
+                DecimalFormat df = new DecimalFormat("##.##");
+                retorno.add(new VendasProdutoUserView(iten.getId(),
+                        iten.getIdVenda(),
+                        iten.getIdProduto(),
+                        prod.getNome(),
+                        iten.getValor(),
+                        Math.round(iten.getValor()*((100-iten.getDesconto())/100)*iten.getQuantidade() *100) /100f,
+                        iten.getQuantidade(),
+                        iten.getDesconto()));
+            }
+        return retorno;
     }
 
     public VendasProduto buscaVendaProduto(int id) {
@@ -39,4 +63,5 @@ public class VendasProdutoController {
         VendasProdutoDao vendasProdutodao = new VendasProdutoDao();
         return vendasProdutodao.excluir(id);
     }
+    
 }
